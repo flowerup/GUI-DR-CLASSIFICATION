@@ -90,8 +90,8 @@ import streamlit as st
 ## STREAMLIT VISUALIZATION
 st.markdown("""
 <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
-    <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #D5D3CC; ">Welcome to</p>
-    <h1 style="font-size: 40px; margin-top: 0; color: #D5D3CC; ">Diabetic Retinopathy Classification</h1>
+    <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #FFFFFF; ">Welcome to</p>
+    <h1 style="font-size: 40px; margin-top: 0; color: #FFFFFF; ">Diabetic Retinopathy Classification</h1>
 </div>
 """, unsafe_allow_html=True)
 
