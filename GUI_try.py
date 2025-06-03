@@ -115,35 +115,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Tombol navigasi sejajar
-st.markdown("""
-<style>
-    div.stButton > button {
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-</style>
-""", unsafe_allow_html=True)
+# BUTTON HOMEPAGE
+if st.button("DETECT DR NOW!"):
+    pass
 
-col1, col2, col3 = st.columns([1, 0.3, 1])
+st.write("")  # spasi antar tombol
 
-with col1:
-    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-    if st.button("DETECT DR NOW!"):
-        pass
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with col2:
-    st.write("")
-
-with col3:
-    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-    if st.button("Learn More"):
-        pass
-    st.markdown("</div>", unsafe_allow_html=True)
-
+if st.button("Learn More"):
+    pass
 
 
 # Konten halaman
