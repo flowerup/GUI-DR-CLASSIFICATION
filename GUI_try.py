@@ -173,8 +173,14 @@ elif st.session_state.page == "main":
             st.rerun()
     
     # === MAIN CONTENT ===
-    st.write("Upload your retinal image for DR classification...")
-    # Konten utama detection di sini
+    st.title("📤 Upload Retinal Image")
+    # File uploader
+    uploaded_file = st.file_uploader(
+    "Choose a retinal image file",
+    type=['jpg', 'jpeg', 'png'],
+    help="Supported formats: JPG, JPEG, PNG"
+    )
+    
     
     back_clicked = st.button("← Back to Home", key="back_main")
     if back_clicked:
