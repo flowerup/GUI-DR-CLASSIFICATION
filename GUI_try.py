@@ -2,7 +2,7 @@ import streamlit as st
 #import numpy as np
 #import pandas as pd
 #import cv2
-#from PIL import Image
+from PIL import Image
 #import tensorflow as tf
 #import scipy as sp
 #import os
@@ -185,6 +185,10 @@ elif st.session_state.page == "main":
     if uploaded_file is not None:
         # Display uploaded image
         st.success("✅ Image uploaded successfully!")
+        # Read image to get dimensions
+        image = Image.open(uploaded_file)
+        width, height = image.size
+    
         # Create columns for better layout
         col1, col2 = st.columns([2, 1])
         with col1:
@@ -196,9 +200,10 @@ elif st.session_state.page == "main":
         with col2:
             st.markdown("**Image Info:**")
             st.write(f"📄 **Name:** {uploaded_file.name}")
-            st.write(f"📊 **Size:** {uploaded_file.size} bytes")
+            st.write(f"📊 **Size:** {width} x {height} pixels")  # Dimensi dalam piksel
             st.write(f"🎯 **Type:** {uploaded_file.type}")
-
+            st.write(f"💾 **File Size:** {uploaded_file.size} bytes")
+            
     # Button back home (nanti ganti aja)
     back_clicked = st.button("← Back to Home", key="back_main")
     if back_clicked:
