@@ -101,6 +101,7 @@ st.markdown("""
 
 ## STREAMLIT VISUALIZATION
 # Inisialisasi
+# Inisialisasi
 if "page" not in st.session_state:
     st.session_state.page = "home"
 
@@ -164,11 +165,19 @@ elif st.session_state.page == "main":
     with st.sidebar:
         st.header("📍 Navigation")
         
-        if st.button("🏠 Home", key="nav_home", use_container_width=True):
+        if st.button("Home", key="nav_home", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
+
+        if st.button("Upload Image", key="nav_main_prep", use_container_width=True):
+            st.session_state.page = "main"
+            st.rerun()
+
+        if st.button("Pre-Processing", key="nav_prepro_prep", use_container_width=True):
+            st.session_state.page = "preprocessing"
+            st.rerun()
             
-        if st.button("📚 Learn More", key="nav_learn", use_container_width=True):
+        if st.button("Learn More", key="nav_learn", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
     
@@ -213,6 +222,33 @@ elif st.session_state.page == "main":
     else:
         st.info("👆 Please upload a retinal image to get started")
 
+# ==== PREPROCESSING PAGE ====
+elif st.session_state.page == "preprocessing":
+    st.title("⚙️ Image Pre-processing")
+    
+    # === SIDEBAR NAVIGASI ===
+    with st.sidebar:
+        st.header("📍 Navigation")
+        
+        if st.button("Home", key="nav_home", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+
+        if st.button("Upload Image", key="nav_main_prep", use_container_width=True):
+            st.session_state.page = "main"
+            st.rerun()
+
+        if st.button("Pre-Processing", key="nav_prepro_prep", use_container_width=True):
+            st.session_state.page = "preprocessing"
+            st.rerun()
+            
+        if st.button("Learn More", key="nav_learn", use_container_width=True):
+            st.session_state.page = "learn"
+            st.rerun()
+    
+    # === CONTENT === 
+    st.subheader("Pre-Processing")
+
 
 # ==== LEARN PAGE ====
 elif st.session_state.page == "learn":
@@ -222,5 +258,4 @@ elif st.session_state.page == "learn":
     if back_clicked:
         st.session_state.page = "home"
         st.rerun()
-       
        
