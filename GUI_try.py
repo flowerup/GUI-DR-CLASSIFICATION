@@ -9,6 +9,7 @@ import streamlit as st
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
 
+# MAIN BACKGROUND 
 st.markdown("""
 <style>
     .stApp {
@@ -99,10 +100,35 @@ st.markdown("""
 
 
 ## STREAMLIT VISUALIZATION
+# Inisialisasi halaman default
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+
+def go_to_page(page_name):
+    st.session_state.page = page_name
+
+# box welcome to
 st.markdown("""
 <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
     <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #FFFFFF; ">Welcome to</p>
     <h1 style="font-size: 40px; margin-top: 0; color: #FFFFFF; ">Diabetic Retinopathy Classification</h1>
 </div>
 """, unsafe_allow_html=True)
+
+# Tombol navigasi sejajar
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("Page 1"):
+        go_to_page("page1")
+with col2:
+    if st.button("Page 2"):
+        go_to_page("page2")
+
+# Konten halaman
+if st.session_state.page == "home":
+    st.write("Ini halaman utama (homepage).")
+elif st.session_state.page == "page1":
+    st.write("Ini halaman 1.")
+elif st.session_state.page == "page2":
+    st.write("Ini halaman 2.")
 
