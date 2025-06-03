@@ -224,7 +224,7 @@ elif st.session_state.page == "main":
 
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
-    st.title("⚙️ Image Pre-processing")
+    st.title("Image Pre-processing")
     
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
@@ -247,7 +247,15 @@ elif st.session_state.page == "preprocessing":
             st.rerun()
     
     # === CONTENT === 
-    st.subheader("Pre-Processing")
+    st.subheader("Shape Normalization")
+
+    st.subheader ("Resize")
+
+    st.subheader ("Color Normalization")
+
+    st.subheader ("CLAHE")
+
+    st.subheader ("final image") #side by side before vs after
 
 
 # ==== LEARN PAGE ====
