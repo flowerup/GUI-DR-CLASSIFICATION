@@ -210,8 +210,8 @@ elif st.session_state.page == "main":
         st.session_state.page = "preprocessing"
         st.rerun()
     
-else:
-    st.info("👆 Please upload a retinal image to get started")
+    else:
+        st.info("👆 Please upload a retinal image to get started")
 
 
 # ==== LEARN PAGE ====
@@ -222,4 +222,5 @@ elif st.session_state.page == "learn":
     if back_clicked:
         st.session_state.page = "home"
         st.rerun()
+       
        
