@@ -126,6 +126,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Routing
+
+# ==== HOME PAGE ====
 if st.session_state.page == "home":
     st.markdown("""
     <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
@@ -136,6 +138,7 @@ if st.session_state.page == "home":
     
     st.markdown("<br>", unsafe_allow_html=True)
 
+    # button
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         detect_clicked = st.button("DETECT DR NOW!", key="detect")
@@ -153,14 +156,33 @@ if st.session_state.page == "home":
         st.session_state.page = "learn"
         st.rerun()  # Paksa rerun
 
+# ==== MAIN PAGE ====
 elif st.session_state.page == "main":
     st.title("INPUT IMAGE")
+
+    # === SIDEBAR NAVIGASI ===
+    with st.sidebar:
+        st.header("📍 Navigation")
+        
+        if st.button("🏠 Home", key="nav_home", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+            
+        if st.button("📚 Learn More", key="nav_learn", use_container_width=True):
+            st.session_state.page = "learn"
+            st.rerun()
+    
+    # === MAIN CONTENT ===
+    st.write("Upload your retinal image for DR classification...")
+    # Konten utama detection di sini
     
     back_clicked = st.button("← Back to Home", key="back_main")
     if back_clicked:
         st.session_state.page = "home"
         st.rerun()
 
+
+# ==== LEARN PAGE ====
 elif st.session_state.page == "learn":
     st.title("Learn about the app step-by-step")
     
