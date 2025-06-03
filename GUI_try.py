@@ -100,13 +100,14 @@ st.markdown("""
 
 
 ## STREAMLIT VISUALIZATION
-# Inisialisasi halaman default
+# Inisialisasi
 if "page" not in st.session_state:
     st.session_state.page = "home"
+
 def go_to_page(page_name):
     st.session_state.page = page_name
 
-# CSS untuk batasi lebar dan center area konten + custom button styling
+# CSS
 st.markdown("""
 <style>
     .appview-container .main {
@@ -115,7 +116,6 @@ st.markdown("""
         margin-right: auto;
     }
     
-    /* Center button styling */
     div.stButton > button {
         display: block;
         margin: 0 auto;
@@ -125,43 +125,47 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# === PAGE ROUTING ===
+# Routing
 if st.session_state.page == "home":
-    # HOME PAGE
-    # Box welcome
     st.markdown("""
     <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
-        <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #FFFFFF; ">Welcome to</p>
-        <h1 style="font-size: 40px; margin-top: 0; color: #FFFFFF; ">Diabetic Retinopathy Classification</h1>
+        <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #FFFFFF;">Welcome to</p>
+        <h1 style="font-size: 40px; margin-top: 0; color: #FFFFFF;">Diabetic Retinopathy Classification</h1>
     </div>
     """, unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)  # spacing
+    
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # Button 1 - pindah ke main page
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("DETECT DR NOW!", key="detect"):
-            go_to_page("main")
-
-    # Button 2 - pindah ke learn more page
+        detect_clicked = st.button("DETECT DR NOW!", key="detect")
+        
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("Learn More", key="learn"):
-            go_to_page("learn")
+        learn_clicked = st.button("Learn More", key="learn")
+
+    # Handle clicks SETELAH semua button didefinisikan
+    if detect_clicked:
+        st.session_state.page = "main"
+        st.rerun()  # Paksa rerun
+        
+    if learn_clicked:
+        st.session_state.page = "learn"
+        st.rerun()  # Paksa rerun
 
 elif st.session_state.page == "main":
     st.title("INPUT IMAGE")
-
-    # Button back to home
-    if st.button("← Back to Home"):
-        go_to_page("home")
     
+    back_clicked = st.button("← Back to Home", key="back_main")
+    if back_clicked:
+        st.session_state.page = "home"
+        st.rerun()
 
-
-elif st.session_state.page == "learn" :
+elif st.session_state.page == "learn":
     st.title("Learn about the app step-by-step")
-
-    # Button back to home
-    if st.button("← Back to Home"):
-        go_to_page("home")
+    
+    back_clicked = st.button("← Back to Home", key="back_learn")
+    if back_clicked:
+        st.session_state.page = "home"
+        st.rerun()
        
