@@ -115,18 +115,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # BUTTON HOMEPAGE
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; margin-top: 20px;'>", unsafe_allow_html=True)
 if st.button("DETECT DR NOW!"):
     pass
 st.markdown("</div>", unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)  # spasi antar tombol
-
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; margin-top: 10px;'>", unsafe_allow_html=True)
 if st.button("Learn More"):
     pass
 st.markdown("</div>", unsafe_allow_html=True)
-
 
 # Konten halaman
 if st.session_state.page == "home":
