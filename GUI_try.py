@@ -126,9 +126,8 @@ with col2:
 
 # Konten halaman
 if st.session_state.page == "home":
-    st.write("Ini halaman utama (homepage).")
 elif st.session_state.page == "page1":
-    st.write("Ini halaman 1.")
+    pass  # kosong, tidak menampilkan apapun
 elif st.session_state.page == "page2":
-    st.write("Ini halaman 2.")
+    pass  # kosong, tidak menampilkan apapun
 
