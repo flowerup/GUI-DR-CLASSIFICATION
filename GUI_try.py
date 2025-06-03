@@ -103,7 +103,6 @@ st.markdown("""
 # Inisialisasi halaman default
 if "page" not in st.session_state:
     st.session_state.page = "home"
-
 def go_to_page(page_name):
     st.session_state.page = page_name
 
@@ -116,13 +115,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # BUTTON HOMEPAGE
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 if st.button("DETECT DR NOW!"):
     pass
+st.markdown("</div>", unsafe_allow_html=True)
 
-st.write("")  # spasi antar tombol
+st.markdown("<br>", unsafe_allow_html=True)  # spasi antar tombol
 
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 if st.button("Learn More"):
     pass
+st.markdown("</div>", unsafe_allow_html=True)
 
 
 # Konten halaman
