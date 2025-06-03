@@ -106,6 +106,17 @@ if "page" not in st.session_state:
 def go_to_page(page_name):
     st.session_state.page = page_name
 
+# CSS untuk batasi lebar dan center area konten
+st.markdown("""
+<style>
+    .appview-container .main {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # box welcome to
 st.markdown("""
 <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
