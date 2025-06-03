@@ -9,6 +9,17 @@ import streamlit as st
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
 
+st.markdown("""
+<style>
+    .stApp {
+        background-color: #f0f8ff;  /* Contoh warna: AliceBlue */
+        /* Atau bisa pakai gradient */
+        /* background: linear-gradient(135deg, #d4fc79, #96e6a1); */
+        min-height: 100vh;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 
 ## DEF EVERY PROCESS
 
