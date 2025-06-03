@@ -126,6 +126,7 @@ with col2:
 
 # Konten halaman
 if st.session_state.page == "home":
+    pass
 elif st.session_state.page == "page1":
     pass  # kosong, tidak menampilkan apapun
 elif st.session_state.page == "page2":
