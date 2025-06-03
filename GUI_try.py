@@ -89,9 +89,9 @@ import streamlit as st
 
 ## STREAMLIT VISUALIZATION
 st.markdown("""
-<div style="background-color: #7ff2fa; padding: 20px; border-radius: 10px;">
-    <h3 style="text-align: center;">Welcome to</h2>
-    <h1 style="text-align: center;">Diabetic Retinopathy Classification</h1>
+<div style="background-color: #7ff2fa; padding: 20px; border-radius: 10px; text-align: center;">
+    <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0;">Welcome to</p>
+    <h1 style="font-size: 40px; margin-top: 0;">Diabetic Retinopathy Classification</h1>
 </div>
 """, unsafe_allow_html=True)
 
