@@ -202,13 +202,16 @@ elif st.session_state.page == "main":
             st.write(f"📄 **Name:** {uploaded_file.name}")
             st.write(f"📊 **Size:** {width} x {height} pixels")  # Dimensi dalam piksel
             st.write(f"🎯 **Type:** {uploaded_file.type}")
-            st.write(f"💾 **File Size:** {uploaded_file.size} bytes")
+    
             
-    # Button back home (nanti ganti aja)
-    back_clicked = st.button("← Back to Home", key="back_main")
-    if back_clicked:
-        st.session_state.page = "home"
+    # Button to next step
+    preprocessing_clicked = st.button("➡️ Pre-processing", key="preprocessing", type="primary", use_container_width=True)
+    if preprocessing_clicked:
+        st.session_state.page = "preprocessing"
         st.rerun()
+    
+else:
+    st.info("👆 Please upload a retinal image to get started")
 
 
 # ==== LEARN PAGE ====
