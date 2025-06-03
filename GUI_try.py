@@ -116,17 +116,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tombol navigasi sejajar
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns([1, 2, 1])  # Kolom tengah lebih lebar sebagai spacer
 with col1:
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
     if st.button("Page 1"):
-        go_to_page("page1")
+        st.session_state.page = "page1"
     st.markdown("</div>", unsafe_allow_html=True)
-
 with col2:
+    pass  # Kolom kosong sebagai spacer
+with col3:
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
     if st.button("Page 2"):
-        go_to_page("page2")
+        st.session_state.page = "page2"
     st.markdown("</div>", unsafe_allow_html=True)
 
 
