@@ -103,10 +103,11 @@ st.markdown("""
 # Inisialisasi halaman default
 if "page" not in st.session_state:
     st.session_state.page = "home"
+
 def go_to_page(page_name):
     st.session_state.page = page_name
 
-# CSS untuk batasi lebar dan center area konten
+# CSS untuk batasi lebar dan center area konten + custom button styling
 st.markdown("""
 <style>
     .appview-container .main {
@@ -114,10 +115,18 @@ st.markdown("""
         margin-left: auto;
         margin-right: auto;
     }
+    
+    /* Center button styling */
+    div.stButton > button {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        min-width: 200px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# box welcome to
+# Box welcome
 st.markdown("""
 <div style="background-color: #79B425; padding: 20px; border-radius: 10px; text-align: center;">
     <p style="font-size: 24px; margin-bottom: 2px; margin-top: 0; color: #FFFFFF; ">Welcome to</p>
@@ -125,22 +134,15 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# BUTTON HOMEPAGE
-st.markdown("<div style='text-align: center; margin-top: 20px;'>", unsafe_allow_html=True)
-if st.button("DETECT DR NOW!"):
-    pass
-st.markdown("</div>", unsafe_allow_html=True)
+# BUTTON HOMEPAGE dengan columns untuk centering
+st.markdown("<br>", unsafe_allow_html=True)  # spacing
 
-st.markdown("<div style='text-align: center; margin-top: 10px;'>", unsafe_allow_html=True)
-if st.button("Learn More"):
-    pass
-st.markdown("</div>", unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button("DETECT DR NOW!", key="detect"):
+        pass
 
-# Konten halaman
-if st.session_state.page == "home":
-    pass
-elif st.session_state.page == "page1":
-    pass  # kosong, tidak menampilkan apapun
-elif st.session_state.page == "page2":
-    pass  # kosong, tidak menampilkan apapun
-
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button("Learn More", key="learn"):
+        pass
