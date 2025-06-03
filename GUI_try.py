@@ -12,7 +12,7 @@ import streamlit as st
 st.markdown("""
 <style>
     .stApp {
-        background-color: #f0f8ff;  /* Contoh warna: AliceBlue */
+        background-color: #55A6C3; 
         /* Atau bisa pakai gradient */
         /* background: linear-gradient(135deg, #d4fc79, #96e6a1); */
         min-height: 100vh;
