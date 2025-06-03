@@ -119,14 +119,14 @@ st.markdown("""
 col1, col2, col3 = st.columns([1, 2, 1])  # Kolom tengah lebih lebar sebagai spacer
 with col1:
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-    if st.button("Page 1"):
+    if st.button("DETECT DR NOW!"):
         st.session_state.page = "page1"
     st.markdown("</div>", unsafe_allow_html=True)
 with col2:
     pass  # Kolom kosong sebagai spacer
 with col3:
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-    if st.button("Page 2"):
+    if st.button("learn more"):
         st.session_state.page = "page2"
     st.markdown("</div>", unsafe_allow_html=True)
 
