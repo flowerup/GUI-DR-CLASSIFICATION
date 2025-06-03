@@ -142,14 +142,12 @@ if st.session_state.page == "home":
     with col2:
         if st.button("DETECT DR NOW!", key="detect"):
             go_to_page("main")
-            st.rerun() #refresh halaman
 
     # Button 2 - pindah ke learn more page
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("Learn More", key="learn"):
             go_to_page("learn")
-            st.rerun() #refresh halaman
 
 elif st.session_state.page == "main":
     st.title("INPUT IMAGE")
@@ -157,7 +155,7 @@ elif st.session_state.page == "main":
     # Button back to home
     if st.button("← Back to Home"):
         go_to_page("home")
-        st.rerun()
+    
 
 
 elif st.session_state.page == "learn" :
@@ -166,5 +164,4 @@ elif st.session_state.page == "learn" :
     # Button back to home
     if st.button("← Back to Home"):
         go_to_page("home")
-        st.rerun()
-
+       
