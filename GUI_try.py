@@ -116,18 +116,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tombol navigasi sejajar
-col1, col2, col3 = st.columns([1, 2, 1])  # Kolom tengah lebih lebar sebagai spacer
+col1, col2 = st.columns([1,1])  # proporsi sama, rapat
+# Tambahkan margin-top kecil agar tombol dekat judul
+st.markdown("<style>div.row-widget.stButton > button {margin-top: 4px;}</style>", unsafe_allow_html=True)
 with col1:
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
     if st.button("DETECT DR NOW!"):
-        st.session_state.page = "page1"
+        st.write("Detect DR clicked")
     st.markdown("</div>", unsafe_allow_html=True)
 with col2:
-    pass  # Kolom kosong sebagai spacer
-with col3:
-    st.markdown("<div style='text-align: center;'<", unsafe_allow_html=True)
-    if st.button("learn more"):
-        st.session_state.page = "page2"
+    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+    if st.button("Learn More"):
+        st.write("Learn More clicked")
     st.markdown("</div>", unsafe_allow_html=True)
 
 
