@@ -173,13 +173,33 @@ elif st.session_state.page == "main":
             st.rerun()
     
     # === MAIN CONTENT ===
-    st.title("📤 Upload Retinal Image")
+    st.subheader("📤 Upload Retinal Image")
     # File uploader
     uploaded_file = st.file_uploader(
     "Choose a retinal image file",
     type=['jpg', 'jpeg', 'png'],
     help="Supported formats: JPG, JPEG, PNG"
     )
+
+    # Handle uploaded file
+    if uploaded_file is not None:
+    # Display uploaded image
+    st.success("✅ Image uploaded successfully!")
+    # Create columns for better layout
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        st.image(
+            uploaded_file, 
+            caption=f"Uploaded: {uploaded_file.name}",
+            use_column_width=True
+        )
+    with col2:
+        st.markdown("**Image Info:**")
+        st.write(f"📄 **Name:** {uploaded_file.name}")
+        st.write(f"📊 **Size:** {uploaded_file.size} bytes")
+        st.write(f"🎯 **Type:** {uploaded_file.type}")
+
+        
     
     
     back_clicked = st.button("← Back to Home", key="back_main")
