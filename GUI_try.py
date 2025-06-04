@@ -1,5 +1,5 @@
 import streamlit as st
-#import numpy as np
+import numpy as np
 #import pandas as pd
 import cv2
 from PIL import Image
@@ -234,7 +234,7 @@ elif st.session_state.page == "preprocessing":
         uploaded_file = st.session_state.uploaded_file
         st.image(
             uploaded_file,
-            caption = f"uploaded image"
+            caption = f"uploaded image",
             use_column_width=True
         )
     else:
