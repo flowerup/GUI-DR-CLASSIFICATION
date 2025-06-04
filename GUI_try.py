@@ -22,7 +22,7 @@ st.markdown("""
             background-color: #054204;
     }
     .css-1d391kg { 
-            background-color: #1D6517
+            background-color: #1D6517;
             color: white;
     }  
 
@@ -33,14 +33,14 @@ st.markdown("""
 
     /* Sidebar button styling */
     .css-1d291kf .stbutton > button {
-            background-color: 1D6517;
+            background-color: #1D6517;
             color: white;
             border: none;
             border-radius: 5px;
     }     
 
     .css-1d391kg .stButton > button:hover {
-            background-color: #CODE7B;
+            background-color: #C0DE7B;
             color:white;
     }
 </style>
@@ -301,8 +301,7 @@ elif st.session_state.page == "preprocessing":
         # display result
         st.image(cropped_img, caption="Shape Normalized Image", width=400)
         st.write(f"Image Size:{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
-    else:
-        st.info("please upload an image first :)")
+    
 
     st.subheader ("Resize")
 
