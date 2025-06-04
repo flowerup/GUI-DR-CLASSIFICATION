@@ -138,7 +138,6 @@ def prepare_image(img_path, target_size=(456, 456)):
 
 ## STREAMLIT VISUALIZATION
 # Inisialisasi
-# Inisialisasi
 if "page" not in st.session_state:
     st.session_state.page = "home"
 
@@ -265,7 +264,7 @@ elif st.session_state.page == "main":
 
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
-    st.title("Image Pre-processing")
+    st.title("Image Pre-Processing")
 
     st.subheader("Uploaded Image")
     # menampilkan uploaded file
@@ -313,10 +312,22 @@ elif st.session_state.page == "preprocessing":
 
         # display result
         st.image(cropped_img, caption="Shape Normalized Image", width=400)
-        st.write(f"Image Size:{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
+        st.write(f"Image Size : {cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
     
 
     st.subheader ("Resize")
+    if 'uploaded_file' in st.session_state:
+        img_array = np.array(st.session_state.uploaded_image)
+        # apply shape norm
+        cropped_img = crop_using_threshold(img_array)
+        # apply resize 
+        target_size = (456,456)
+        resized_img = cv2.resize(cropped_img, target_size)
+
+        # display result
+        st.image(resized_img, caption="Resized Image", width=500)
+        st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
+
 
     st.subheader ("Color Normalization")
 
