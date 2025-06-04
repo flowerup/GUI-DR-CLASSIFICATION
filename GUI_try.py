@@ -267,7 +267,7 @@ elif st.session_state.page == "preprocessing":
     st.subheader("Shape Normalization")
     if 'uploaded_file' in st.session_state:
         # convert image to numpy array
-        img_array = np.array(st.session_State.uploaded_image)
+        img_array = np.array(st.session_state.uploaded_image)
         # apply shape norm
         cropped_img = crop_using_threshold(img_array)
 
