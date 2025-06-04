@@ -237,7 +237,7 @@ elif st.session_state.page == "preprocessing":
         st.image(
             uploaded_file,
             caption = f"Uploaded Image",
-            width = 350
+            width = 400
         )
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
@@ -274,7 +274,7 @@ elif st.session_state.page == "preprocessing":
         cropped_img = crop_using_threshold(img_array)
 
         # display result
-        st.image(cropped_img, caption="Shape Normalized Image", width=350)
+        st.image(cropped_img, caption="Shape Normalized Image", width=400)
         st.write(f"Image Size:{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
     else:
         st.info("please upload an image first :)")
