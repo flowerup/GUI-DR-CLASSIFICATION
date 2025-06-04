@@ -1,7 +1,7 @@
 import streamlit as st
 #import numpy as np
 #import pandas as pd
-#import cv2
+import cv2
 from PIL import Image
 #import tensorflow as tf
 #import scipy as sp
@@ -22,42 +22,41 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-## DEF EVERY PROCESS
-
+# ==== DEF EVERY PROCESS ====
 # PRE-PROCESSING
 # shape normalization
-#def crop_using_threshold(img, threshold=0.1):
-    # Pastikan input dalam format RGB
-#    if img.ndim == 3:
-#       gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-#    else:
-#        gray = img.copy()
+def crop_using_threshold(img, threshold=0.1):
+    #Pastikan input dalam format RGB
+    if img.ndim == 3:
+       gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    else:
+        gray = img.copy()
     
-#    Normalisasi ke [0,1]
-#    norm_img = gray / 255.0
+    # Normalisasi ke [0,1]
+    norm_img = gray / 255.0
 
     # Threshold untuk membuat mask biner
-#    mask = norm_img > threshold
+    mask = norm_img > threshold
 
     # Cari bounding box dari mask
-#    coords = np.argwhere(mask)
-#    if coords.size == 0:
-#        return img  # fallback jika citra blank
+    coords = np.argwhere(mask)
+    if coords.size == 0:
+        return img  # fallback jika citra blank
 
-#    y_min, x_min = coords.min(axis=0)
-#    y_max, x_max = coords.max(axis=0)
+    y_min, x_min = coords.min(axis=0)
+    y_max, x_max = coords.max(axis=0)
 
     # Crop citra asli (bukan grayscale!)
-#    cropped = img[y_min:y_max+1, x_min:x_max+1]
-#    return cropped
+    cropped = img[y_min:y_max+1, x_min:x_max+1]
+    return cropped
 
 # resize
-#def prepare_image(img_path, target_size=(456, 456)):
-#    img = cv2.imread(img_path)
-#    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-#    cropped = crop_using_threshold(img)
-#    resized = cv2.resize(cropped, target_size)
-#    return resized
+def prepare_image(img_path, target_size=(456, 456)):
+    img = cv2.imread(img_path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    cropped = crop_using_threshold(img)
+    resized = cv2.resize(cropped, target_size)
+    return resized
 
 # color normalization
 #def is_rgb_close(current_rgb, target_rgb, tolerance=15):
@@ -225,6 +224,11 @@ elif st.session_state.page == "main":
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
     st.title("Image Pre-processing")
+    st.image(
+                uploaded_file, 
+                caption=f"Uploaded: {uploaded_file.name}",
+                use_column_width=True
+            )
     
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
