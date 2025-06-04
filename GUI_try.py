@@ -19,11 +19,11 @@ st.markdown("""
     
     /* Force sidebar styling dengan multiple selectors */
     section[data-testid="stSidebar"] {
-        background-color: #054204 !important;
+        background-color: #C0DE7B !important;
     }
     
     section[data-testid="stSidebar"] > div {
-        background-color: #054204 !important;
+        background-color: #C0DE7B !important;
         color: white !important;
     }
     
@@ -32,25 +32,26 @@ st.markdown("""
     }
     
     section[data-testid="stSidebar"] .stButton > button {
-        background-color: #FFFFFF !important;
+        background-color: #79B425 !important;
         color: white !important;
         border: none !important;
         border-radius: 5px !important;
     }
-    
+
+    /*ketika kursor arah ke button, warna berubah*/
     section[data-testid="stSidebar"] .stButton > button:hover {
-        background-color: #C0DE7B !important;
+        background-color: #FFFFFF !important;
         color: white !important;
     }
     
     /* Fallback untuk versi lama */
     .css-1d391kg {
-        background-color: #054204 !important;
+        background-color: #C0DE7B !important;
         color: white !important;
     }
     
     .css-1d391kg .stButton > button {
-        background-color: #FFFFFF !important;
+        background-color: #79B425 !important;
         color: white !important;
     }
 </style>
