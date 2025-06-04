@@ -239,7 +239,7 @@ elif st.session_state.page == "preprocessing":
         st.image(
             uploaded_file,
             caption = f"Uploaded Image"
-            width = 350
+            width = 200
         )
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
@@ -279,7 +279,7 @@ elif st.session_state.page == "preprocessing":
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.image(cropped_img, caption="Shape Normalized Image", use_container_width=True)
-            st.write(f"**Size:**{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
+            st.write(f"Image Size:{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
 
     else:
         st.info("please upload an image first :)")
