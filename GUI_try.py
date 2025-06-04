@@ -232,10 +232,14 @@ elif st.session_state.page == "preprocessing":
     # menampilkan uploaded file
     if 'uploaded_file' in st.session_state:
         uploaded_file = st.session_state.uploaded_file
+
+        # size display image
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
         st.image(
             uploaded_file,
-            caption = f"uploaded image",
-            use_column_width=True
+            caption = f"Uploaded Image"
+            width = 350
         )
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
@@ -272,8 +276,13 @@ elif st.session_state.page == "preprocessing":
         cropped_img = crop_using_threshold(img_array)
 
         # display result
-        st.image(cropped_img, caption="Shape Normalized Image", use_container_width=True)
-        st.write(f"**Size:**{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.image(cropped_img, caption="Shape Normalized Image", use_container_width=True)
+            st.write(f"**Size:**{cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
+
+    else:
+        st.info("please upload an image first :)")
 
     st.subheader ("Resize")
 
