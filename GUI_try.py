@@ -229,13 +229,14 @@ elif st.session_state.page == "main":
 elif st.session_state.page == "preprocessing":
     st.title("Image Pre-processing")
 
+    st.subheader("Uploaded Image")
     # menampilkan uploaded file
     if 'uploaded_file' in st.session_state:
         uploaded_file = st.session_state.uploaded_file
         # size display image
         st.image(
             uploaded_file,
-            caption = f"Uploaded Image",
+            caption = f"Uploaded Image"
             width = 350
         )
     else:
