@@ -325,7 +325,7 @@ elif st.session_state.page == "preprocessing":
         resized_img = cv2.resize(cropped_img, target_size)
 
         # display result
-        st.image(resized_img, caption="Resized Image", width=500)
+        st.image(resized_img, caption="Resized Image", width=450)
         st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
 
 
