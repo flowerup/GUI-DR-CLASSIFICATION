@@ -16,32 +16,42 @@ st.markdown("""
         background-color: #97D4F1; 
         min-height: 100vh;
     }
-            
-    /*Sidebar Style*/
-    .css-1d391kg { 
-            background-color: #054204;
+    
+    /* Force sidebar styling dengan multiple selectors */
+    section[data-testid="stSidebar"] {
+        background-color: #1D6517 !important;
     }
-    .css-1d391kg { 
-            background-color: #1D6517;
-            color: white;
-    }  
-
-    /* Sidebar header text */
-    .css-1d391kg h2{
-            color: white !important;
-    } 
-
-    /* Sidebar button styling */
-    .css-1d291kf .stbutton > button {
-            background-color: #1D6517;
-            color: white;
-            border: none;
-            border-radius: 5px;
-    }     
-
-    .css-1d391kg .stButton > button:hover {
-            background-color: #C0DE7B;
-            color:white;
+    
+    section[data-testid="stSidebar"] > div {
+        background-color: #1D6517 !important;
+        color: white !important;
+    }
+    
+    section[data-testid="stSidebar"] h2 {
+        color: white !important;
+    }
+    
+    section[data-testid="stSidebar"] .stButton > button {
+        background-color: #054204 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 5px !important;
+    }
+    
+    section[data-testid="stSidebar"] .stButton > button:hover {
+        background-color: #C0DE7B !important;
+        color: white !important;
+    }
+    
+    /* Fallback untuk versi lama */
+    .css-1d391kg {
+        background-color: #1D6517 !important;
+        color: white !important;
+    }
+    
+    .css-1d391kg .stButton > button {
+        background-color: #054204 !important;
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
