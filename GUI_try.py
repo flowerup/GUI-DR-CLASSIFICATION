@@ -14,9 +14,34 @@ st.markdown("""
 <style>
     .stApp {
         background-color: #97D4F1; 
-        /* Atau bisa pakai gradient */
-        /* background: linear-gradient(135deg, #d4fc79, #96e6a1); */
         min-height: 100vh;
+    }
+            
+    /*Sidebar Style*/
+    .css-1d391kg { 
+            background-color: #054204;
+    }
+    .css-1d391kg { 
+            background-color: #1D6517
+            color: white;
+    }  
+
+    /* Sidebar header text */
+    .css-1d391kg h2{
+            color: white !important;
+    } 
+
+    /* Sidebar button styling */
+    .css-1d291kf .stbutton > button {
+            background-color: 1D6517;
+            color: white;
+            border: none;
+            border-radius: 5px;
+    }     
+
+    .css-1d391kg .stButton > button:hover {
+            background-color: #CODE7B;
+            color:white;
     }
 </style>
 """, unsafe_allow_html=True)
