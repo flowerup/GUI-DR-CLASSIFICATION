@@ -235,7 +235,7 @@ elif st.session_state.page == "preprocessing":
         # size display image
         st.image(
             uploaded_file,
-            caption = f"Uploaded Image"
+            caption = f"Uploaded Image",
             width = 350
         )
     else:
