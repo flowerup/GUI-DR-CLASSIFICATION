@@ -276,6 +276,7 @@ elif st.session_state.page == "preprocessing":
             caption = f"Uploaded Image",
             width = 400
         )
+        st.write(f"Image Size : {uploaded_file.shape[1]} x {uploaded_file.shape[0]} pixels")
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
         if st.button("← Go to Upload"):
@@ -325,7 +326,7 @@ elif st.session_state.page == "preprocessing":
         resized_img = cv2.resize(cropped_img, target_size)
 
         # display result
-        st.image(resized_img, caption="Resized Image", width=450)
+        st.image(resized_img, caption="Resized Image", width=400)
         st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
 
 
