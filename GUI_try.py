@@ -276,7 +276,7 @@ elif st.session_state.page == "preprocessing":
             caption = f"Uploaded Image",
             width = 400
         )
-        st.write(f"Image Size : {uploaded_file.shape[1]} x {uploaded_file.shape[0]} pixels")
+        st.write(f"Image Size: {width} x {height} pixels")
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
         if st.button("← Go to Upload"):
