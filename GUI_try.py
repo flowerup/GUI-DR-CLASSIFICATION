@@ -270,6 +270,10 @@ elif st.session_state.page == "preprocessing":
     # menampilkan uploaded file
     if 'uploaded_file' in st.session_state:
         uploaded_file = st.session_state.uploaded_file
+
+        uploaded_image = st.session_state.uploaded_image
+        width, height = uploaded_image.size
+        
         # size display image
         st.image(
             uploaded_file,
