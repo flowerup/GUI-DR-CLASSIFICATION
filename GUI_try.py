@@ -193,6 +193,10 @@ elif st.session_state.page == "main":
     if uploaded_file is not None:
         # Display uploaded image
         st.success("✅ Image uploaded successfully!")
+        # simpan uploaded image
+        st.session_state.uploaded_file = uploaded_file
+        st.session_state.uploaded_image = Image.open(uploaded_file)
+
         # Read image to get dimensions
         image = Image.open(uploaded_file)
         width, height = image.size
@@ -224,11 +228,20 @@ elif st.session_state.page == "main":
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
     st.title("Image Pre-processing")
-    st.image(
-                uploaded_file, 
-                caption=f"Uploaded: {uploaded_file.name}",
-                use_column_width=True
-            )
+
+    # menampilkan uploaded file
+    if 'uploaded_file' in st.session_state:
+        uploaded_file = st.session_state.uploaded_file
+        st.image(
+            uploaded_file,
+            caption = f"uploaded image"
+            use_column_width=True
+        )
+    else:
+        st.warning("⚠️ No image found. Please upload an image first.")
+        if st.button("← Go to Upload"):
+            st.session_state.page = "main"
+            st.rerun()
     
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
