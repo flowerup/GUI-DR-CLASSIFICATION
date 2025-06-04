@@ -38,10 +38,12 @@ st.markdown("""
         border-radius: 5px !important;
     }
 
-    /*ketika kursor arah ke button, warna berubah*/
+    /* ✅ HOVER dengan text forest green */
     section[data-testid="stSidebar"] .stButton > button:hover {
-        background-color: #FFFFFF !important;
-        color: white !important;
+        background-color: #FFFFFF !important;  /* Background putih */
+        color: #228B22 !important;             /* Text forest green */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     
     /* Fallback untuk versi lama */
