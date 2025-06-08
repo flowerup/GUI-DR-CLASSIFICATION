@@ -97,27 +97,27 @@ def prepare_image(img_path, target_size=(456, 456)):
     return resized
 
 # color normalization
-#def is_rgb_close(current_rgb, target_rgb, tolerance=15):
-#    return all(abs(c - t) < tolerance for c, t in zip(current_rgb, target_rgb))
+def is_rgb_close(current_rgb, target_rgb, tolerance=15):
+    return all(abs(c - t) < tolerance for c, t in zip(current_rgb, target_rgb))
 
-#def color_norm(image_np, target_rgb=(131.19, 65.04, 14.84), tolerance=15):
-#    pixels = image_np.astype(np.float32)
-#    mean_rgb = np.mean(pixels, axis=(0, 1))
+def color_norm(image_np, target_rgb=(131.19, 65.04, 14.84), tolerance=15):
+    pixels = image_np.astype(np.float32)
+    mean_rgb = np.mean(pixels, axis=(0, 1))
 
-#    if is_rgb_close(mean_rgb, target_rgb, tolerance):
-#        print("⏭️ Skipped color normalization (already close to target).")
-#        return image_np
+    if is_rgb_close(mean_rgb, target_rgb, tolerance):
+        print("⏭️ Skipped color normalization (already close to target).")
+        return image_np
 
-#    Ri, Gi, Bi = pixels[:, :, 0], pixels[:, :, 1], pixels[:, :, 2]
+    Ri, Gi, Bi = pixels[:, :, 0], pixels[:, :, 1], pixels[:, :, 2]
 
-#    if mean_rgb[0] != 0:
-#        Ri = np.clip((Ri / mean_rgb[0]) * target_rgb[0], 0, 255)
-#    if mean_rgb[1] != 0:
-#        Gi = np.clip((Gi / mean_rgb[1]) * target_rgb[1], 0, 255)
-#    if mean_rgb[2] != 0:
-#        Bi = np.clip((Bi / mean_rgb[2]) * target_rgb[2], 0, 255)
+    if mean_rgb[0] != 0:
+        Ri = np.clip((Ri / mean_rgb[0]) * target_rgb[0], 0, 255)
+    if mean_rgb[1] != 0:
+        Gi = np.clip((Gi / mean_rgb[1]) * target_rgb[1], 0, 255)
+    if mean_rgb[2] != 0:
+        Bi = np.clip((Bi / mean_rgb[2]) * target_rgb[2], 0, 255)
 
-#    return np.dstack((Ri, Gi, Bi)).astype(np.uint8)
+    return np.dstack((Ri, Gi, Bi)).astype(np.uint8)
 
 # CLAHE
 #def contrast_enhance(img_clahe):
