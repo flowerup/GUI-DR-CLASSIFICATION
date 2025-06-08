@@ -392,7 +392,8 @@ elif st.session_state.page == "preprocessing":
             st.image(final_processed_img, caption="Final Processed Image", use_container_width=True)
             st.write(f"**Size:** {final_processed_img.shape[1]} x {final_processed_img.shape[0]} pixels")
             st.write(f"channels: {final_processed_img.shape[2] if len(final_processed_img.shape) > 2 else 1}")
-
+    st.write("✅ Final Image block executed")
+    
 # ==== LEARN PAGE ====
 elif st.session_state.page == "learn":
     st.title("Learn about the app step-by-step")
