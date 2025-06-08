@@ -121,15 +121,19 @@ def color_norm(image_np, target_rgb=(131.19, 65.04, 14.84), tolerance=15):
 
 # CLAHE
 def contrast_enhance(img_clahe):
-  clahe = cv2.createCLAHE(clipLimit= 1.0, tileGridSize=(15, 15))
+    # pastikan tipe data uint8
+    img_clahe = img_clahe.astype(np.uint8)
+    
+    clahe = cv2.createCLAHE(clipLimit=1.0, tileGridSize=(15, 15))
+    
+    R = img_clahe[..., 0]
+    G = img_clahe[..., 1]
+    B = img_clahe[..., 2]
 
-  Red = img_clahe[...,0]
-  Green = img_clahe[...,1]
-  Blue = img_clahe[...,2]
+    G_eq = clahe.apply(G)
 
-  Green_fix = clahe.apply(Green)
-  new_img = np.stack([Red, Green_fix, Blue], axis=2)
-  return new_img
+    enhanced_img = np.stack([R, G_eq, B], axis=2)
+    return enhanced_img
 
 
 
