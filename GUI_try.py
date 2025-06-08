@@ -367,7 +367,6 @@ elif st.session_state.page == "preprocessing":
         st.write(f"Image Size: {clahe_img.shape[1]} x {clahe_img.shape[0]} pixels")
 
     st.subheader ("final image") #side by side before vs after
-    st.write("✅ Final Image block executed")
     if 'uploaded_file' in st.session_state:
         # Gambar Original
         pil_img = st.session_state.uploaded_image.convert("RGB")
@@ -386,13 +385,11 @@ elif st.session_state.page == "preprocessing":
             st.markdown("Before Preprocessing")
             st.image(img_array, caption="Original Image", use_container_width=True)
             st.write(f"**Size:** {img_array.shape[1]} x {img_array.shape[0]} pixels")
-            st.write(f"channels: {img_array.shape[2] if len(img_array.shape) > 2 else 1}")
 
         with col2:
             st.markdown("After Preprocessing")
             st.image(final_processed_img, caption="Final Processed Image", use_container_width=True)
             st.write(f"**Size:** {final_processed_img.shape[1]} x {final_processed_img.shape[0]} pixels")
-            st.write(f"channels: {final_processed_img.shape[2] if len(final_processed_img.shape) > 2 else 1}")
     
     
 # ==== LEARN PAGE ====
