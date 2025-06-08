@@ -120,16 +120,16 @@ def color_norm(image_np, target_rgb=(131.19, 65.04, 14.84), tolerance=15):
     return np.dstack((Ri, Gi, Bi)).astype(np.uint8)
 
 # CLAHE
-#def contrast_enhance(img_clahe):
-#  clahe = cv2.createCLAHE(clipLimit= 1.0, tileGridSize=(15, 15))
+def contrast_enhance(img_clahe):
+  clahe = cv2.createCLAHE(clipLimit= 1.0, tileGridSize=(15, 15))
 
-#  Red = img_clahe[...,0]
-#  Green = img_clahe[...,1]
-#  Blue = img_clahe[...,2]
+  Red = img_clahe[...,0]
+  Green = img_clahe[...,1]
+  Blue = img_clahe[...,2]
 
-#  Green_fix = clahe.apply(Green)
-#  new_img = np.stack([Red, Green_fix, Blue], axis=2)
-#  return new_img
+  Green_fix = clahe.apply(Green)
+  new_img = np.stack([Red, Green_fix, Blue], axis=2)
+  return new_img
 
 
 
@@ -345,6 +345,21 @@ elif st.session_state.page == "preprocessing":
         st.write(f"Image Size: {color_normalized_img.shape[1]} x {color_normalized_img.shape[0]} pixels")
 
     st.subheader ("CLAHE")
+    if 'uploaded_file' in st.session_state:
+        img_array = np.array(st.session_state.uploaded_image)
+        # apply shape norm
+        cropped_img = crop_using_threshold(img_array)
+        # apply resize 
+        target_size = (456,456)
+        resized_img = cv2.resize(cropped_img, target_size)
+        # apply color norm
+        color_normalized_img = color_norm(resized_img)
+        # apply clahe
+        clahe_img = contrast_enhance(color_normalized_img)
+
+        # display result
+        st.image(clahe_img, caption="CLAHE Image", width=400)
+        st.write(f"Image Size: {clahe_img.shape[1]} x {clahe_img.shape[0]} pixels")
 
     st.subheader ("final image") #side by side before vs after
 
