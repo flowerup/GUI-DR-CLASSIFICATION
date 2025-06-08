@@ -351,7 +351,7 @@ elif st.session_state.page == "preprocessing":
 
     st.subheader ("CLAHE")
     if 'uploaded_file' in st.session_state:
-        img_array = np.array(st.session_state.uploaded_image)
+        img_array = np.array(st.session_state.uploaded_image.convert("RGB"))
         # apply shape norm
         cropped_img = crop_using_threshold(img_array)
         # apply resize 
