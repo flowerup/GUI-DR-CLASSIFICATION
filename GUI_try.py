@@ -369,7 +369,8 @@ elif st.session_state.page == "preprocessing":
     st.subheader ("final image") #side by side before vs after
     if 'uploaded_file' in st.session_state:
         # Gambar Original
-        img_array = np.array(st.session_state.uploaded_image.convert("RGB"))
+        pil_img = st.session_state.uploaded_image.convert("RGB")
+        img_array = np.array(pil_img)
         # Pre-pro gambar
         cropped_img = crop_using_threshold(img_array)
         target_size = (456, 456)
