@@ -270,17 +270,12 @@ elif st.session_state.page == "preprocessing":
     # menampilkan uploaded file
     if 'uploaded_file' in st.session_state:
         uploaded_file = st.session_state.uploaded_file
-
-        uploaded_image = st.session_state.uploaded_image
-        width, height = uploaded_image.size
-        
         # size display image
         st.image(
             uploaded_file,
             caption = f"Uploaded Image",
             width = 400
         )
-        st.write(f"Image Size: {width} x {height} pixels")
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
         if st.button("← Go to Upload"):
@@ -330,11 +325,24 @@ elif st.session_state.page == "preprocessing":
         resized_img = cv2.resize(cropped_img, target_size)
 
         # display result
-        st.image(resized_img, caption="Resized Image", width=400)
+        st.image(resized_img, caption="Resized Image", width=500)
         st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
 
 
     st.subheader ("Color Normalization")
+    if 'uploaded_file' in st.session_state:
+        img_array = np.array(st.session_state.uploaded_image)
+        # apply shape norm
+        cropped_img = crop_using_threshold(img_array)
+        # apply resize 
+        target_size = (456,456)
+        resized_img = cv2.resize(cropped_img, target_size)
+        # apply color norm
+        color_normalized_img = color_norm(resized_img)
+
+        # display result
+        st.image(color_normalized_img, caption="Color Normalized Image", width=400)
+        st.write(f"Image Size: {color_normalized_img.shape[1]} x {color_normalized_img.shape[0]} pixels")
 
     st.subheader ("CLAHE")
 
