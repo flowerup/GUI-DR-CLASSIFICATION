@@ -201,21 +201,22 @@ elif st.session_state.page == "main":
     with st.sidebar:
         st.header("📍 Navigation")
         
-        if st.button("Home", key="nav_home", use_container_width=True):
+        if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
 
-        if st.button("Upload Image", key="nav_main_prep", use_container_width=True):
+        if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
             st.rerun()
 
-        if st.button("Pre-Processing", key="nav_prepro_prep", use_container_width=True):
+        if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
             
-        if st.button("Learn More", key="nav_learn", use_container_width=True):
+        if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
+    
     
     # === MAIN CONTENT ===
     st.subheader("📤 Upload Retinal Image")
@@ -286,19 +287,19 @@ elif st.session_state.page == "preprocessing":
     with st.sidebar:
         st.header("📍 Navigation")
         
-        if st.button("Home", key="nav_home", use_container_width=True):
+        if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
 
-        if st.button("Upload Image", key="nav_main_prep", use_container_width=True):
+        if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
             st.rerun()
 
-        if st.button("Pre-Processing", key="nav_prepro_prep", use_container_width=True):
+        if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
             
-        if st.button("Learn More", key="nav_learn", use_container_width=True):
+        if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
     
