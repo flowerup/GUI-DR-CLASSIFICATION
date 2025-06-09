@@ -216,6 +216,10 @@ elif st.session_state.page == "main":
         if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
+
+        if st.button("Classification", key="nav_class_main", use_container_width=True):
+            st.session_state.page = "classification"
+            st.rerun()
             
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
@@ -302,6 +306,10 @@ elif st.session_state.page == "preprocessing":
         if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
+        
+        if st.button("Classification", key="nav_class_main", use_container_width=True):
+            st.session_state.page = "classification"
+            st.rerun()
             
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
@@ -366,7 +374,7 @@ elif st.session_state.page == "preprocessing":
         st.image(clahe_img, caption="CLAHE Image", width=400)
         st.write(f"Image Size: {clahe_img.shape[1]} x {clahe_img.shape[0]} pixels")
 
-    st.subheader ("final image") #side by side before vs after
+    st.subheader ("FINAL IMAGE") #side by side before vs after
     if 'uploaded_file' in st.session_state:
         # Gambar Original
         pil_img = st.session_state.uploaded_image.convert("RGB")
@@ -391,6 +399,41 @@ elif st.session_state.page == "preprocessing":
             st.image(final_processed_img, caption="Final Processed Image", use_container_width=True)
             st.write(f"**Size:** {final_processed_img.shape[1]} x {final_processed_img.shape[0]} pixels")
     
+    # Button to next step
+    preprocessing_clicked = st.button("➡️ Classification", key="classification", type="primary", use_container_width=True)
+    if preprocessing_clicked:
+        st.session_state.page = "classification"
+        st.rerun()
+
+# ==== CLASSIFICATION PAGE ====
+elif st.session_state.page == "classification":
+    st.title("IMAGE CLASSIFICATION")
+
+    # === SIDEBAR NAVIGASI ===
+    with st.sidebar:
+        st.header("📍 Navigation")
+        
+        if st.button("Home", key="nav_home_main", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()
+
+        if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
+            st.session_state.page = "main"
+            st.rerun()
+
+        if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
+            st.session_state.page = "preprocessing"
+            st.rerun()
+        
+        if st.button("Classification", key="nav_class_main", use_container_width=True):
+            st.session_state.page = "classification"
+            st.rerun()
+            
+        if st.button("Learn More", key="nav_learn_main", use_container_width=True):
+            st.session_state.page = "learn"
+            st.rerun()
+        
+        
     
 # ==== LEARN PAGE ====
 elif st.session_state.page == "learn":
