@@ -273,7 +273,7 @@ elif st.session_state.page == "main":
 
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
-    st.title("Image Pre-Processing")
+    st.title("PRE-PROCESSING")
 
     st.subheader("Uploaded Image")
     # menampilkan uploaded file
