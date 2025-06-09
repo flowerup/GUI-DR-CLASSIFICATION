@@ -267,9 +267,7 @@ elif st.session_state.page == "main":
     if preprocessing_clicked:
         st.session_state.page = "preprocessing"
         st.rerun()
-    
-    else:
-        st.info("👆 Please upload a retinal image to get started")
+   
 
 # ==== PREPROCESSING PAGE ====
 elif st.session_state.page == "preprocessing":
