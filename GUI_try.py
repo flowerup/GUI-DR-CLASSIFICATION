@@ -207,6 +207,8 @@ elif st.session_state.page == "main":
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
+        
+        st.divider()
 
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
@@ -219,6 +221,8 @@ elif st.session_state.page == "main":
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
+        
+        st.divider()
             
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
@@ -422,6 +426,8 @@ elif st.session_state.page == "preprocessing":
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
+        
+        st.divider()
 
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
@@ -434,6 +440,8 @@ elif st.session_state.page == "preprocessing":
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
+        
+        st.divider()
             
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
@@ -449,6 +457,8 @@ elif st.session_state.page == "classification":
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
+        
+        st.divider()
 
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
@@ -461,7 +471,9 @@ elif st.session_state.page == "classification":
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
-            
+
+        st.divider()
+
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
