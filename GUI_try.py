@@ -279,12 +279,25 @@ elif st.session_state.page == "preprocessing":
     # menampilkan uploaded file
     if 'uploaded_file' in st.session_state:
         uploaded_file = st.session_state.uploaded_file
-        # size display image
-        st.image(
-            uploaded_file,
-            caption = f"Uploaded Image",
-            width = 400
-        )
+        # Read image to get dimensions
+        image = Image.open(uploaded_file)
+        width, height = image.size
+    
+        # Create columns for better layout
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.image(
+                uploaded_file, 
+                caption=f"Uploaded: {uploaded_file.name}",
+                use_column_width=True
+            )
+        with col2:
+            st.markdown("**Image Info:**")
+            st.write(f"📄 **Name:** {uploaded_file.name}")
+            st.write(f"📊 **Size:** {width} x {height} pixels")  # Dimensi dalam piksel
+            st.write(f"🎯 **Type:** {uploaded_file.type}")
+    
+
     else:
         st.warning("⚠️ No image found. Please upload an image first.")
         if st.button("← Go to Upload"):
