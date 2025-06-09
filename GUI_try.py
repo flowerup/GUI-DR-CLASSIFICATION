@@ -140,8 +140,6 @@ def contrast_enhance(img_clahe):
 
 
 
-
-
 ## STREAMLIT VISUALIZATION
 # Inisialisasi
 if "page" not in st.session_state:
@@ -205,20 +203,15 @@ elif st.session_state.page == "main":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        # ✅ CENTER DASHBOARD TITLE
-        st.markdown(
-        "<h2 style='text-align: center; color: #054204; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-        unsafe_allow_html=True
-        )
+        
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
             st.rerun()
-            
+
         if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
@@ -226,8 +219,7 @@ elif st.session_state.page == "main":
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+            
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
@@ -248,9 +240,9 @@ elif st.session_state.page == "main":
         st.success("✅ Image uploaded successfully!")
 
         # cek dulu apakah ini image baru ?
-        if 'current_image_name' not in st.session_state or st.session_state.current_image_name != uploaded_file.name:
+        if 'current_image' not in st.session_state or st.session_state.current_image != uploaded_file.name:
             st.session_state.prepro_started = False
-            st.session_state.current_image_name = uploaded_file.name
+            st.session_state.uploaded_image = Image.open(uploaded_file)
 
         # simpan uploaded image
         st.session_state.uploaded_file = uploaded_file
@@ -288,12 +280,12 @@ elif st.session_state.page == "preprocessing":
 
     # cek apakah ini pertama kali ke pre-pro
     if 'last_preprocessed_image' not in st.session_state:
-        st.session_state.prepro_started = False
+        st.session_state.prero_started = False
     elif 'uploaded_file' in st.session_state:
         current_image = st.session_state.uploaded_file.name
-        if st.session_state.get('last_preprocessed_image', '') != current_image:
+        if st.session_state.get('last_processed_image', '') != current_image:
             st.session_state.prepro_started = False
-            st.session_state.last_preprocessed_image = current_image
+            st.session_state.last_processed_image = current_image
 
 
 
@@ -426,29 +418,23 @@ elif st.session_state.page == "preprocessing":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        # ✅ CENTER DASHBOARD TITLE
-        st.markdown(
-        "<h2 style='text-align: center; color: #054204; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-        unsafe_allow_html=True
-        )
+        
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
             st.rerun()
-            
+
         if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
-
+        
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+            
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
@@ -459,32 +445,27 @@ elif st.session_state.page == "classification":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        # ✅ CENTER DASHBOARD TITLE
-        st.markdown(
-        "<h2 style='text-align: center; color: #054204; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-        unsafe_allow_html=True
-        )
+        
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+
         if st.button("Upload Image", key="nav_upload_main", use_container_width=True):
             st.session_state.page = "main"
             st.rerun()
-            
+
         if st.button("Pre-Processing", key="nav_prep_main", use_container_width=True):
             st.session_state.page = "preprocessing"
             st.rerun()
-
+        
         if st.button("Classification", key="nav_class_main", use_container_width=True):
             st.session_state.page = "classification"
             st.rerun()
-        # ✅ DIVIDER
-        st.divider()
+            
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
+        
         
     
 # ==== LEARN PAGE ====
