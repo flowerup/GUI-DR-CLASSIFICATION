@@ -203,7 +203,6 @@ elif st.session_state.page == "main":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.header("📍 Navigation")
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
@@ -446,7 +445,6 @@ elif st.session_state.page == "classification":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.header("📍 Navigation")
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
