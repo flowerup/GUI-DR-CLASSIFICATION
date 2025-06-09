@@ -295,7 +295,7 @@ elif st.session_state.page == "preprocessing":
     st.markdown("---")
     start_prepro = st.button("🚀 Start Pre-Processing", key="start_prepro", type="primary", use_container_width=True)
     # state ketika pre-pro sudah di klik
-    if start_prepro: st.sesion_state.prepro_started = True
+    if start_prepro: st.session_state.prepro_started = True
 
     # cek apakah sudah dimulai
     if st.session_state.get('prepro_started', False):
