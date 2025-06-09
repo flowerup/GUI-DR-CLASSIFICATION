@@ -204,7 +204,7 @@ elif st.session_state.page == "main":
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
         st.markdown(
-            "<h2 style='text-align: center; color: #054204; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
+            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
             unsafe_allow_html=True
         )
         
@@ -426,6 +426,10 @@ elif st.session_state.page == "preprocessing":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
+        st.markdown(
+            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
+            unsafe_allow_html=True
+        )
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
@@ -457,6 +461,10 @@ elif st.session_state.page == "classification":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
+        st.markdown(
+            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
+            unsafe_allow_html=True
+        )
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
