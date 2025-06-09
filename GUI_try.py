@@ -291,9 +291,106 @@ elif st.session_state.page == "preprocessing":
             st.session_state.page = "main"
             st.rerun()
     
+    # BUTTON START PRE-PROCESSING
+    st.markdown("---")
+    start_prepro = st.button("🚀 Start Pre-Processing", key="start_prepro", type="primary", use_container_width=True)
+    # state ketika pre-pro sudah di klik
+    if start_prepro: st.sesion_state.prepro_started = True
+
+    # cek apakah sudah dimulai
+    if st.session_state.get('prepro_started', False):
+        # === CONTENT === 
+        st.subheader("Shape Normalization")
+        if 'uploaded_file' in st.session_state:
+            # convert image to numpy array
+            img_array = np.array(st.session_state.uploaded_image)
+            # apply shape norm
+            cropped_img = crop_using_threshold(img_array)
+
+            # display result
+            st.image(cropped_img, caption="Shape Normalized Image", width=400)
+            st.write(f"Image Size : {cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
+    
+
+        st.subheader ("Resize")
+        if 'uploaded_file' in st.session_state:
+            img_array = np.array(st.session_state.uploaded_image)
+            # apply shape norm
+            cropped_img = crop_using_threshold(img_array)
+            # apply resize 
+            target_size = (456,456)
+            resized_img = cv2.resize(cropped_img, target_size)
+
+            # display result
+            st.image(resized_img, caption="Resized Image", width=500)
+            st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
+
+
+        st.subheader ("Color Normalization")
+        if 'uploaded_file' in st.session_state:
+            img_array = np.array(st.session_state.uploaded_image)
+            # apply shape norm
+            cropped_img = crop_using_threshold(img_array)
+            # apply resize 
+            target_size = (456,456)
+            resized_img = cv2.resize(cropped_img, target_size)
+            # apply color norm
+            color_normalized_img = color_norm(resized_img)
+
+            # display result
+            st.image(color_normalized_img, caption="Color Normalized Image", width=400)
+            st.write(f"Image Size: {color_normalized_img.shape[1]} x {color_normalized_img.shape[0]} pixels")
+
+        st.subheader ("CLAHE")
+        if 'uploaded_file' in st.session_state:
+            img_array = np.array(st.session_state.uploaded_image.convert("RGB"))
+            # apply shape norm
+            cropped_img = crop_using_threshold(img_array)
+            # apply resize 
+            target_size = (456,456)
+            resized_img = cv2.resize(cropped_img, target_size)
+            # apply color norm
+            color_normalized_img = color_norm(resized_img)
+            # apply clahe
+            clahe_img = contrast_enhance(color_normalized_img)
+
+            # display result
+            st.image(clahe_img, caption="CLAHE Image", width=400)
+            st.write(f"Image Size: {clahe_img.shape[1]} x {clahe_img.shape[0]} pixels")
+
+        st.subheader ("FINAL IMAGE") #side by side before vs after
+        if 'uploaded_file' in st.session_state:
+            # Gambar Original
+            pil_img = st.session_state.uploaded_image.convert("RGB")
+            img_array = np.array(pil_img)
+            # Pre-pro gambar
+            cropped_img = crop_using_threshold(img_array)
+            target_size = (456, 456)
+            resized_img = cv2.resize(cropped_img, target_size)
+            color_normalized_img = color_norm(resized_img)
+            final_processed_img = contrast_enhance(color_normalized_img)
+
+            # side by side display
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.markdown("Before Preprocessing")
+                st.image(img_array, caption="Original Image", use_container_width=True)
+                st.write(f"**Size:** {img_array.shape[1]} x {img_array.shape[0]} pixels")
+
+            with col2:
+                st.markdown("After Preprocessing")
+                st.image(final_processed_img, caption="Final Processed Image", use_container_width=True)
+                st.write(f"**Size:** {final_processed_img.shape[1]} x {final_processed_img.shape[0]} pixels")
+    
+        # Button to next step
+        preprocessing_clicked = st.button("➡️ Classification", key="classification", type="primary", use_container_width=True)
+        if preprocessing_clicked:
+            st.session_state.page = "classification"
+            st.rerun()
+
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.header("📍 Navigation")
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
@@ -314,96 +411,6 @@ elif st.session_state.page == "preprocessing":
         if st.button("Learn More", key="nav_learn_main", use_container_width=True):
             st.session_state.page = "learn"
             st.rerun()
-    
-    # === CONTENT === 
-    st.subheader("Shape Normalization")
-    if 'uploaded_file' in st.session_state:
-        # convert image to numpy array
-        img_array = np.array(st.session_state.uploaded_image)
-        # apply shape norm
-        cropped_img = crop_using_threshold(img_array)
-
-        # display result
-        st.image(cropped_img, caption="Shape Normalized Image", width=400)
-        st.write(f"Image Size : {cropped_img.shape[1]} x {cropped_img.shape[0]} pixels")
-    
-
-    st.subheader ("Resize")
-    if 'uploaded_file' in st.session_state:
-        img_array = np.array(st.session_state.uploaded_image)
-        # apply shape norm
-        cropped_img = crop_using_threshold(img_array)
-        # apply resize 
-        target_size = (456,456)
-        resized_img = cv2.resize(cropped_img, target_size)
-
-        # display result
-        st.image(resized_img, caption="Resized Image", width=500)
-        st.write(f"Image Size : {resized_img.shape[1]} x {resized_img.shape[0]} pixels")
-
-
-    st.subheader ("Color Normalization")
-    if 'uploaded_file' in st.session_state:
-        img_array = np.array(st.session_state.uploaded_image)
-        # apply shape norm
-        cropped_img = crop_using_threshold(img_array)
-        # apply resize 
-        target_size = (456,456)
-        resized_img = cv2.resize(cropped_img, target_size)
-        # apply color norm
-        color_normalized_img = color_norm(resized_img)
-
-        # display result
-        st.image(color_normalized_img, caption="Color Normalized Image", width=400)
-        st.write(f"Image Size: {color_normalized_img.shape[1]} x {color_normalized_img.shape[0]} pixels")
-
-    st.subheader ("CLAHE")
-    if 'uploaded_file' in st.session_state:
-        img_array = np.array(st.session_state.uploaded_image.convert("RGB"))
-        # apply shape norm
-        cropped_img = crop_using_threshold(img_array)
-        # apply resize 
-        target_size = (456,456)
-        resized_img = cv2.resize(cropped_img, target_size)
-        # apply color norm
-        color_normalized_img = color_norm(resized_img)
-        # apply clahe
-        clahe_img = contrast_enhance(color_normalized_img)
-
-        # display result
-        st.image(clahe_img, caption="CLAHE Image", width=400)
-        st.write(f"Image Size: {clahe_img.shape[1]} x {clahe_img.shape[0]} pixels")
-
-    st.subheader ("FINAL IMAGE") #side by side before vs after
-    if 'uploaded_file' in st.session_state:
-        # Gambar Original
-        pil_img = st.session_state.uploaded_image.convert("RGB")
-        img_array = np.array(pil_img)
-        # Pre-pro gambar
-        cropped_img = crop_using_threshold(img_array)
-        target_size = (456, 456)
-        resized_img = cv2.resize(cropped_img, target_size)
-        color_normalized_img = color_norm(resized_img)
-        final_processed_img = contrast_enhance(color_normalized_img)
-
-        # side by side display
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.markdown("Before Preprocessing")
-            st.image(img_array, caption="Original Image", use_container_width=True)
-            st.write(f"**Size:** {img_array.shape[1]} x {img_array.shape[0]} pixels")
-
-        with col2:
-            st.markdown("After Preprocessing")
-            st.image(final_processed_img, caption="Final Processed Image", use_container_width=True)
-            st.write(f"**Size:** {final_processed_img.shape[1]} x {final_processed_img.shape[0]} pixels")
-    
-    # Button to next step
-    preprocessing_clicked = st.button("➡️ Classification", key="classification", type="primary", use_container_width=True)
-    if preprocessing_clicked:
-        st.session_state.page = "classification"
-        st.rerun()
 
 # ==== CLASSIFICATION PAGE ====
 elif st.session_state.page == "classification":
