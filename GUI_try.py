@@ -248,9 +248,9 @@ elif st.session_state.page == "main":
         st.success("✅ Image uploaded successfully!")
 
         # cek dulu apakah ini image baru ?
-        if 'current_image' not in st.session_state or st.session_state.current_image != uploaded_file.name:
+        if 'current_image_name' not in st.session_state or st.session_state.current_image_name != uploaded_file.name:
             st.session_state.prepro_started = False
-            st.session_state.uploaded_image = Image.open(uploaded_file)
+            st.session_state.current_image_name = uploaded_file.name
 
         # simpan uploaded image
         st.session_state.uploaded_file = uploaded_file
@@ -288,12 +288,12 @@ elif st.session_state.page == "preprocessing":
 
     # cek apakah ini pertama kali ke pre-pro
     if 'last_preprocessed_image' not in st.session_state:
-        st.session_state.prero_started = False
+        st.session_state.prepro_started = False
     elif 'uploaded_file' in st.session_state:
         current_image = st.session_state.uploaded_file.name
-        if st.session_state.get('last_processed_image', '') != current_image:
+        if st.session_state.get('last_preprocessed_image', '') != current_image:
             st.session_state.prepro_started = False
-            st.session_state.last_processed_image = current_image
+            st.session_state.last_preprocessed_image = current_image
 
 
 
