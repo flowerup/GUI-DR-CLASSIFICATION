@@ -253,7 +253,7 @@ elif st.session_state.page == "main":
             st.image(
                 uploaded_file, 
                 caption=f"Uploaded: {uploaded_file.name}",
-                use_column_width=True
+                use_container_width=True
             )
         with col2:
             st.markdown("**Image Info:**")
@@ -289,7 +289,7 @@ elif st.session_state.page == "preprocessing":
             st.image(
                 uploaded_file, 
                 caption=f"Uploaded: {uploaded_file.name}",
-                use_column_width=True
+                use_container_width=True
             )
         with col2:
             st.markdown("**Image Info:**")
