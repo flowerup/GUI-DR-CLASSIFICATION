@@ -203,7 +203,11 @@ elif st.session_state.page == "main":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.header("DASHBOARD")
+        # ✅ CENTER DASHBOARD TITLE
+        st.markdown(
+        "<h2 style='text-align: center; color: white; margin-bottom: 20px;'>DASHBOARD</h2>", 
+        unsafe_allow_html=True
+        )
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
             st.rerun()
