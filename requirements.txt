@@ -3,5 +3,5 @@ opencv-python-headless
 Pillow
 scipy
 matplotlib
-tensorflow==2.9.0
+tensorflow==2.8.0
 gdown
