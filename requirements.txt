@@ -3,5 +3,5 @@ opencv-python-headless
 Pillow
 scipy
 matplotlib
-tensorflow
+tensorflow-cpu==2.13.0
 gdown
