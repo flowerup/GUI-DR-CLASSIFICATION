@@ -4,8 +4,8 @@ import time
 import cv2
 from PIL import Image
 import tensorflow as tf
+import os
 #import scipy as sp
-#import os
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
 #import pandas as pd
@@ -139,10 +139,18 @@ def contrast_enhance(img_clahe):
 # LOAD MODEL
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("effb4_1.keras")
+    model_path = "effb4_1.keras"
+    
+    # Download from Google Drive if not exists
+    if not os.path.exists(model_path):
+        file_id = "11iiWf5Aoj05rMMco9RtEJWAMf_6cL4x1" 
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, model_path, quiet=False)
+
+    # Load model
+    return tf.keras.models.load_model(model_path)
 
 model = load_model()
-
 
 
 
