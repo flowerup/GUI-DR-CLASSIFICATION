@@ -5,6 +5,7 @@ import cv2
 from PIL import Image
 import tensorflow as tf
 import os
+import gdown
 #import scipy as sp
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
@@ -304,7 +305,7 @@ elif st.session_state.page == "preprocessing":
 
     # cek apakah ini pertama kali ke pre-pro
     if 'last_preprocessed_image' not in st.session_state:
-        st.session_state.prero_started = False
+        st.session_state.prepro_started = False
     elif 'uploaded_file' in st.session_state:
         current_image = st.session_state.uploaded_file.name
         if st.session_state.get('last_processed_image', '') != current_image:
@@ -506,6 +507,7 @@ elif st.session_state.page == "classification":
 
 
         # simpan hasil klasifikasi
+        st.session_state.final_img_array = final_img
         st.session_state.predicted_class = class_labels[predicted_class]
         st.session_state.confidence = confidence
         st.session_state.inference_time = inference_time
