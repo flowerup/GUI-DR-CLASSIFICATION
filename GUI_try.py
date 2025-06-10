@@ -1,13 +1,14 @@
 import streamlit as st
 import numpy as np
-#import pandas as pd
+import time
 import cv2
 from PIL import Image
-#import tensorflow as tf
+import tensorflow as tf
 #import scipy as sp
 #import os
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
+#import pandas as pd
 
 # MAIN BACKGROUND 
 st.markdown("""
@@ -135,6 +136,17 @@ def contrast_enhance(img_clahe):
     enhanced_img = np.stack([R, G_eq, B], axis=2)
     return enhanced_img
 
+# LOAD MODEL
+@st.cache_resource
+def load_model():
+    return tf.keras.models.load_model("effb4_1.keras")
+
+model = load_model()
+
+
+
+
+
 
 
 
@@ -203,10 +215,6 @@ elif st.session_state.page == "main":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.markdown(
-            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-            unsafe_allow_html=True
-        )
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
@@ -426,10 +434,6 @@ elif st.session_state.page == "preprocessing":
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.markdown(
-            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-            unsafe_allow_html=True
-        )
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
@@ -457,14 +461,66 @@ elif st.session_state.page == "preprocessing":
 
 # ==== CLASSIFICATION PAGE ====
 elif st.session_state.page == "classification":
-    st.title("IMAGE CLASSIFICATION")
+    st.title("DR CLASSIFICATION")
+
+    if 'uploaded_file' not in st.session_state:
+        st.warning("⚠️ No image uploaded. Please upload and preprocess an image first.")
+    else:
+        st.subheader("Preprocessed Image")
+
+        # Pre-processing
+        pil_img = st.session_state.uploaded_image.convert("RGB")
+        img_array = np.array(pil_img)
+        cropped_img = crop_using_threshold(img_array)
+        resized_img = cv2.resize(cropped_img, (456, 456))
+        color_normalized_img = color_norm(resized_img)
+        final_img = contrast_enhance(color_normalized_img)
+        # display gambar
+        st.image(final_img, caption="Image to be classified", width=400)
+
+        # prepare input model
+        input_img = final_img/255.0 #normalisasi ke[0,1]
+        input_tensor = np.expand_dims(input_img, axis=0)
+
+        # Klasifikasi
+        st.subheader("Prediction Result")
+        # buat cek inference time
+        start_time = time.time()
+        prediction = model.predict(input_tensor)
+        end_time = time.time()
+
+        confidence = np.max(prediction)
+        predicted_class = np.argmax(prediction)
+        inference_time = end_time - start_time
+
+        # Mapping label
+        class_labels = ["Normal", "Mild", "Moderate", "Severe", "PDR"]
+
+
+        # simpan hasil klasifikasi
+        st.session_state.predicted_class = class_labels[predicted_class]
+        st.session_state.confidence = confidence
+        st.session_state.inference_time = inference_time
+
+
+        st.success(f"**Predicted Class :**{class_labels[predicted_class]}")
+        st.write(f"**Confidence Score :** {confidence*100:.2f}%")
+        st.write(f"**Inference Time :** {inference_time:.3f} seconds")
+
+
+
+    
+    
+                
+                
+               
+
+
+
+
 
     # === SIDEBAR NAVIGASI ===
     with st.sidebar:
-        st.markdown(
-            "<h2 style='text-align: center; color: white; font-size: 32px; margin-bottom: 20px;'>DASHBOARD</h2>", 
-            unsafe_allow_html=True
-        )
         
         if st.button("Home", key="nav_home_main", use_container_width=True):
             st.session_state.page = "home"
