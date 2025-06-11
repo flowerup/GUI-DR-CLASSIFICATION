@@ -15,7 +15,7 @@ import gdown
 st.markdown("""
 <style>
     .stApp {
-        background-color: #97D4F1; 
+        background-color: #FFFFFF; 
         min-height: 100vh;
     }
     
