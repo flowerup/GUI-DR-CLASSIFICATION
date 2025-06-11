@@ -3,7 +3,7 @@ import numpy as np
 import time
 import cv2
 from PIL import Image
-import tensorflow as tf
+#import tensorflow as tf
 import os
 import gdown
 #import scipy as sp
@@ -138,20 +138,20 @@ def contrast_enhance(img_clahe):
     return enhanced_img
 
 # LOAD MODEL
-@st.cache_resource
-def load_model():
-    model_path = "effb4_1.keras"
+#@st.cache_resource
+#def load_model():
+ #   model_path = "effb4_1.keras"
     
     # Download from Google Drive if not exists
-    if not os.path.exists(model_path):
-        file_id = "11iiWf5Aoj05rMMco9RtEJWAMf_6cL4x1" 
-        url = f"https://drive.google.com/uc?id={file_id}"
-        gdown.download(url, model_path, quiet=False)
+#    if not os.path.exists(model_path):
+#        file_id = "11iiWf5Aoj05rMMco9RtEJWAMf_6cL4x1" 
+#        url = f"https://drive.google.com/uc?id={file_id}"
+#        gdown.download(url, model_path, quiet=False)
 
     # Load model
-    return tf.keras.models.load_model(model_path)
+#    return tf.keras.models.load_model(model_path)
 
-model = load_model()
+#model = load_model()
 
 
 
